@@ -26,7 +26,7 @@ def index():
         desc = request.form['desc']
         t1 = Task(title=title, desc = desc)
         db.session.add(t1)
-        db.session.commit()
+        db.session.commit() 
         
     all_task = Task.query.all()
     return render_template('index.html', all_task=all_task)
