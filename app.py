@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -26,10 +26,19 @@ def index():
         desc = request.form['desc']
         t1 = Task(title=title, desc = desc)
         db.session.add(t1)
-        db.session.commit() 
+        db.session.commit()
         
     all_task = Task.query.all()
     return render_template('index.html', all_task=all_task)
+
+
+@app.route('/delete/<int:sno>')
+def delete(sno):
+    t_delete = Task.query.filter_by(sno=sno).first()
+    db.session.delete(t_delete)
+    db.session.commit()
+    return redirect("/")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
