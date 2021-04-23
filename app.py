@@ -40,5 +40,21 @@ def delete(sno):
     return redirect("/")
 
 
+@app.route('/update/<int:sno>',  methods=['GET', 'POST'])
+def update(sno):
+    if request.method == 'POST':
+        title = request.form['title']
+        desc = request.form['desc']
+        t_update  = Task.query.filter_by(sno=sno).first()
+        t_update.title = title
+        t_update.desc = desc
+        db.session.add(t_update)
+        db.session.commit()
+        return redirect("/")
+
+    t_update  = Task.query.filter_by(sno=sno).first()
+    return render_template('update.html', t_update=t_update)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
