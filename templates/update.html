@@ -1,4 +1,7 @@
 {% extends 'navbar.html' %}
+{% block title %}
+  Update
+{% endblock title %}
 {% block body %}
   
       <div class="container my-3">
@@ -12,7 +15,11 @@
               <label for="desc" class="form-label">Description</label>
               <input type="text" class="form-control" name="desc" id="desc" value="{{t_update.desc}}">
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <td>
+            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+            <a href="/" button type="submit" class="btn btn-danger btn-sm mx-3">Cancel</a></button>
+            </td>
+            
           </form>
       </div>
     <!-- Optional JavaScript; choose one of the two! -->
