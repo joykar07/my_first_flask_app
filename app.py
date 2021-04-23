@@ -28,8 +28,8 @@ def index():
         db.session.add(t1)
         db.session.commit()
         
-    all_task = Task.query.all()
-    return render_template('index.html', all_task=all_task)
+    all_tasks = Task.query.all()
+    return render_template('index.html', all_tasks=all_tasks)
 
 
 @app.route('/delete/<int:sno>')
